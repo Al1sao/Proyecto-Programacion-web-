@@ -4,24 +4,47 @@
   <meta charset="UTF-8">
   <title>MKL GAMES Wiki</title>
   <link rel="stylesheet" href="Style.css">
-  
+  <script defer src="Java.js"></script>
 </head>
-<body>
 
+<body>
   <header>
-    <nav>
-      <ul>
-        <li class="tilin">
-          <a href="#"> agugugabga </a>
-          <li class="dropdown">
-      </ul>
-    </nav>
+    <div class="btn-menu">
+      <label for="btn-menu">☰</label>
+    </div>
+
     <div class="logo">🎮 MKL GAMES</div>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar juego...">
+    <!-- Botón login y carrito -->
+    <div class="header-actions">
+      <a href="#" id="login-btn" class="login-btn">Login</a>
+      <a href="#" class="cart-btn" id="cart-btn" title="Carrito de compras">🛒</a>
     </div>
   </header>
+
+  <!-- Menú lateral -->
+  <input type="checkbox" id="btn-menu">
+  <div class="container-menu">
+    <div class="cont-menu">
+      <label for="btn-menu" class="close-menu">✖️</label>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar juego...">
+      </div>
+
+      <nav>
+        <a href="#">Juegos</a>
+        <a href="#">Catalogo</a>
+        <a href="#">Novedades</a>
+        <a href="#">Eventos</a>
+        <hr>
+        <a href="#">Nosotros</a>
+        <a href="#">Blog</a>
+        <a href="#">Contacto</a>
+        <hr>
+      </nav>
+    </div>
+  </div>
 
   <main>
     <h1>Bienvenido a MKL GAMES</h1>
@@ -33,9 +56,7 @@
   </main>
 
   <footer>
-    © 2025 
+    © 2025 MKL GAMES — Todos los derechos reservados.
   </footer>
-
-  
 </body>
 </html>
