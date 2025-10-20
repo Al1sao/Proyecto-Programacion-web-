@@ -14,7 +14,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== HEADER ===== */
+/*  HEADER  */
 header {
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,8 @@ header {
   font-weight: bold;
   color: #66fcf1;
   text-align: center;
-  flex-grow: 1;
+   flex: 0 0 auto;
+  margin: 0 auto;
   letter-spacing: 1px;
   text-decoration: none;
   transition: 0.25s ease;
@@ -59,7 +60,7 @@ header {
 
 .logo:hover {
   color: #ffffff;
-  text-shadow: 0 0 8px #66fcf1, 0 0 15px #45a29e;
+    text-shadow: 0 0 8px #66fcf1, 0 0 15px #45a29e;
   transform: scale(1.05);
 }
 
@@ -98,7 +99,7 @@ header {
 }
 .cart-btn:hover { color: #45a29e; }
 
-/* ===== MENÚ LATERAL ===== */
+/*  MENÚ LATERAL  */
 #btn-menu { display: none; }
 .container-menu {
   position: fixed;

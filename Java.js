@@ -1,62 +1,73 @@
-// --- Dropdowns (si existen) ---
-document.querySelectorAll('.dropdown').forEach(drop => {
-  drop.addEventListener('mouseenter', () => {
-    const menu = drop.querySelector('.dropdown-menu');
-    menu.style.opacity = '1';
-    menu.style.visibility = 'visible';
-    menu.style.transform = 'translateY(0)';
+// ...existing code...
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Login visual ---
+  const loginBtn = document.getElementById('login-btn');
+  const user = localStorage.getItem('username');
+  if (loginBtn) loginBtn.textContent = user || 'Login';
+
+  // --- Inicializar todos los carruseles ---
+  const carousels = document.querySelectorAll('.game-carousel');
+  carousels.forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const leftBtn = carousel.querySelector('.carousel-btn.left');
+    const rightBtn = carousel.querySelector('.carousel-btn.right');
+    const cards = carousel.querySelectorAll('.game-card');
+
+    if (!track || !leftBtn || !rightBtn || cards.length === 0) {
+      if (leftBtn) leftBtn.style.display = 'none';
+      if (rightBtn) rightBtn.style.display = 'none';
+      return;
+    }
+
+    let currentIndex = 0;
+    const visibleCards = 4; // ajustar si quieres responsive
+    const gap = 20; // debe coincidir con CSS (.carousel-track gap)
+
+    function updateCarousel() {
+      // proteger si no hay cartas
+      if (cards.length === 0) return;
+      const cardWidth = cards[0].offsetWidth + gap;
+      const totalCards = cards.length;
+      const pages = Math.ceil(totalCards / visibleCards);
+      const maxIndex = Math.max(0, pages - 1);
+
+      track.style.transform = `translateX(-${currentIndex * visibleCards * cardWidth}px)`;
+      leftBtn.disabled = currentIndex === 0;
+      rightBtn.disabled = currentIndex === maxIndex;
+    }
+
+    leftBtn.addEventListener('click', () => {
+      if (currentIndex > 0) { currentIndex--; updateCarousel(); }
+    });
+
+    rightBtn.addEventListener('click', () => {
+      const pages = Math.ceil(cards.length / visibleCards);
+      const maxIndex = Math.max(0, pages - 1);
+      if (currentIndex < maxIndex) { currentIndex++; updateCarousel(); }
+    });
+
+    // recalcular al redimensionar
+    window.addEventListener('resize', updateCarousel);
+
+    // esperar a que las imágenes del carrusel carguen para calcular tamaños correctos
+    const imgs = carousel.querySelectorAll('img');
+    if (imgs.length === 0) {
+      updateCarousel();
+    } else {
+      let loaded = 0;
+      imgs.forEach(img => {
+    if (img.complete) {
+     loaded++;
+      } else {
+      img.addEventListener('load', () => {
+      loaded++;
+       if (loaded === imgs.length) updateCarousel();
+       });
+       }
+      }
+    );
+      if (loaded === imgs.length) updateCarousel();
+    }
   });
-  drop.addEventListener('mouseleave', () => {
-    const menu = drop.querySelector('.dropdown-menu');
-    menu.style.opacity = '0';
-    menu.style.visibility = 'hidden';
-    menu.style.transform = 'translateY(-10px)';
-  });
 });
-
-// --- Login visual ---
-const loginBtn = document.getElementById('login-btn');
-const user = localStorage.getItem('username');
-if (user) {
-  loginBtn.textContent = user;
-  loginBtn.href = "#";
-} else {
-  loginBtn.textContent = "Login";
-  loginBtn.href = "#";
-}
-
-// --- Carrusel simple por grupos de 4 ---
-const track = document.querySelector('.carousel-track');
-const leftBtn = document.querySelector('.carousel-btn.left');
-const rightBtn = document.querySelector('.carousel-btn.right');
-const cards = document.querySelectorAll('.game-card');
-
-let currentIndex = 0;
-const visibleCards = 4;
-
-function updateCarousel() {
-  const cardWidth = cards[0].offsetWidth + 20; // ancho + gap
-  const totalCards = cards.length;
-  const maxIndex = Math.ceil(totalCards / visibleCards) - 1;
-
-  track.style.transform = `translateX(-${currentIndex * visibleCards * cardWidth}px)`;
-  leftBtn.disabled = currentIndex === 0;
-  rightBtn.disabled = currentIndex === maxIndex;
-}
-
-leftBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateCarousel();
-  }
-});
-
-rightBtn.addEventListener('click', () => {
-  const maxIndex = Math.ceil(cards.length / visibleCards) - 1;
-  if (currentIndex < maxIndex) {
-    currentIndex++;
-    updateCarousel();
-  }
-});
-
-updateCarousel();
+// ...existing code...
