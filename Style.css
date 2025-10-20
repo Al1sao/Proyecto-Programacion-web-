@@ -9,9 +9,12 @@ body {
   background: #0b0c10;
   color: #c5c6c7;
   padding-top: 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 header {
   display: flex;
   justify-content: space-between;
@@ -25,6 +28,22 @@ header {
   box-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 
+/* Botón menú (☰) */
+.btn-menu label {
+  font-size: 28px;
+  color: #e6ffff;
+  cursor: pointer;
+  transition: 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+}
+.btn-menu label:hover {
+  background: rgba(255,255,255,0.12);
+  color: #66fcf1;
+  transform: scale(1.05);
+}
+
 /* Logo */
 .logo {
   font-size: 1.8em;
@@ -33,13 +52,18 @@ header {
   text-align: center;
   flex-grow: 1;
   letter-spacing: 1px;
-  transition: 0.3s;
-}
-.logo:hover {
-  color: #45a29e;
+  text-decoration: none;
+  transition: 0.25s ease;
+  cursor: pointer;
 }
 
-/* --- Contenedor Login + Carrito --- */
+.logo:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #66fcf1, 0 0 15px #45a29e;
+  transform: scale(1.05);
+}
+
+/* Acciones header */
 .header-actions {
   position: absolute;
   right: 30px;
@@ -49,7 +73,6 @@ header {
   gap: 15px;
 }
 
-/* Botón de login */
 .login-btn {
   background-color: #45a29e;
   border: none;
@@ -60,15 +83,12 @@ header {
   transition: 0.3s;
   font-weight: bold;
   text-decoration: none;
-  display: inline-block;
 }
-
 .login-btn:hover {
   background-color: #66fcf1;
   color: #0b0c10;
 }
 
-/* Botón carrito */
 .cart-btn {
   font-size: 1.6em;
   text-decoration: none;
@@ -76,53 +96,23 @@ header {
   transition: 0.3s;
   position: relative;
 }
+.cart-btn:hover { color: #45a29e; }
 
-.cart-btn:hover {
-  color: #45a29e;
-}
-
-/* Ícono de cantidad del carrito */
-.cart-btn::after {
-  content: attr(data-count);
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background: #ff0000;
-  color: white;
-  font-size: 0.7em;
-  padding: 2px 6px;
-  border-radius: 50%;
-  display: none;
-}
-
-/* Mostrar contador solo si hay items */
-.cart-btn[data-count]:not([data-count="0"])::after {
-  display: inline-block;
-}
-
-/* Menú lateral */
-#btn-menu {
-  display: none;
-}
-
+/* ===== MENÚ LATERAL ===== */
+#btn-menu { display: none; }
 .container-menu {
   position: fixed;
   background: rgba(0, 0, 0, 0.9);
   width: 100%;
   height: 100vh;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
+  top: 0; left: 0;
+  opacity: 0; visibility: hidden;
   transition: all 500ms ease;
   z-index: 2000;
 }
-
 #btn-menu:checked ~ .container-menu {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1; visibility: visible;
 }
-
 .cont-menu {
   width: 100%;
   max-width: 260px;
@@ -134,11 +124,9 @@ header {
   padding-top: 60px;
   box-shadow: 2px 0 10px rgba(0,0,0,0.5);
 }
-
 #btn-menu:checked ~ .container-menu .cont-menu {
   transform: translateX(0%);
 }
-
 .close-menu {
   position: absolute;
   right: 15px;
@@ -148,15 +136,9 @@ header {
   font-size: 22px;
   transition: 0.3s;
 }
-.close-menu:hover {
-  color: #45a29e;
-}
+.close-menu:hover { color: #45a29e; }
 
-/* Buscador dentro del menú */
-.search-bar {
-  padding: 0 20px 20px 20px;
-}
-
+.search-bar { padding: 0 20px 20px 20px; }
 .search-bar input {
   width: 100%;
   padding: 10px 12px;
@@ -173,7 +155,6 @@ header {
   box-shadow: 0 0 5px #66fcf1;
 }
 
-/* Links menú lateral */
 .cont-menu nav {
   display: flex;
   flex-direction: column;
@@ -196,27 +177,122 @@ header {
   margin: 10px 0;
 }
 
-/* Contenido principal */
+/* ===== CONTENIDO PRINCIPAL ===== */
 main {
+  flex: 1;
   padding: 40px;
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
   background: rgba(255,255,255,0.03);
   border-radius: 12px;
 }
-h1 {
-  color: #66fcf1;
-  margin-bottom: 15px;
-}
-p {
-  line-height: 1.6;
+h1 { color: #66fcf1; margin-bottom: 15px; }
+p { line-height: 1.6; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1f2833;
+  text-align: center;
+  color: #c5c6c7;
+  padding: 15px;
+  margin-top: auto;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.6);
 }
 
-/* Footer */
-footer {
+/* ===== CARRUSEL ===== */
+.game-carousel {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 50px auto;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Tarjetas uniformes */
+.game-card {
+  min-width: 260px;
+  max-width: 260px;
+  background: #1f2833;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.game-card:hover { transform: scale(1.05); }
+
+/* Imágenes iguales (16:9 exacto) */
+.game-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0b0c10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info */
+.game-info {
+  background: #0b0c10;
+  padding: 10px;
+  color: #66fcf1;
+  font-weight: bold;
   text-align: center;
-  margin-top: 60px;
-  padding: 20px;
-  border-top: 1px solid #1f2833;
-  color: #45a29e;
+}
+
+/* Flechas tipo Steam */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(20, 25, 30, 0.7);
+  color: #e6ffff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+  width: 42px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: 0.2s ease;
+  z-index: 10;
+}
+.carousel-btn:hover {
+  background: rgba(40, 50, 60, 0.9);
+  color: #66fcf1;
+  transform: translateY(-50%) scale(1.05);
+}
+.carousel-btn svg {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+.carousel-btn.left { left: 0; }
+.carousel-btn.right { right: 0; }
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: translateY(-50%);
 }
