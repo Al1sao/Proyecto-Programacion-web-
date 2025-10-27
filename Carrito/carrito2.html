@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar - Tienda de Juegos</title>
+    <link rel="stylesheet" href="Style.css">
+    <style>
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .cart {
+            background: rgba(31, 40, 51, 0.8);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .cart h2 {
+            color: #66fcf1;
+            margin-bottom: 35px;
+            text-align: center;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px dashed #2e2e2e;
+            color: #c5c6c7;
+            font-size: 1.1em;
+        }
+
+        .summary-row span:first-child {
+            color: #c5c6c7;
+            font-weight: normal;
+            text-transform: capitalize;
+        }
+
+        .summary-row span:last-child {
+            color: #66fcf1;
+            font-weight: bold;
+        }
+
+        .summary-row.total {
+            font-size: 1.8em;
+            font-weight: 700;
+            border-bottom: none;
+            margin-top: 30px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            border-top: 3px solid #66fcf1;
+            background: rgba(102, 252, 241, 0.05);
+            border-radius: 8px;
+        }
+
+        .summary-row.total span:first-child {
+            color: #66fcf1;
+            font-weight: bold;
+        }
+
+        .summary-row.total span:last-child {
+            color: #66fcf1;
+            font-size: 1.2em;
+        }
+
+        .payment {
+            margin: 30px 0;
+            border: 2px solid #2e2e2e;
+            padding: 25px;
+            border-radius: 10px;
+            background: rgba(11, 12, 16, 0.6);
+        }
+
+        .payment legend {
+            color: #66fcf1;
+            padding: 0 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .payment label {
+            display: block;
+            margin: 12px 0;
+            color: #c5c6c7;
+            cursor: pointer;
+            font-size: 1.05em;
+            padding: 8px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .payment label:hover {
+            background: rgba(102, 252, 241, 0.05);
+            padding-left: 12px;
+        }
+
+        .payment input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .cuotas {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #c5c6c7;
+            font-size: 1.05em;
+            padding: 8px;
+        }
+
+        #installments {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #2e2e2e;
+            background: #1f2833;
+            color: #c5c6c7;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #installments:hover {
+            border-color: #66fcf1;
+        }
+
+        #installments:focus {
+            outline: none;
+            border-color: #66fcf1;
+            box-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+        }
+
+        .btn {
+            background: #45a29e;
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #66fcf1;
+            color: #0b0c10;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 252, 241, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+            .cart {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Animación de agradecimiento */
+        .thank-you-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .thank-you-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .thank-you-content {
+            background: linear-gradient(135deg, #0b0c10, #1f2833);
+            padding: 60px 80px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(102, 252, 241, 0.5);
+            text-align: center;
+            border: 3px solid #66fcf1;
+            transform: scale(0.5);
+            transition: transform 0.5s ease;
+            max-width: 500px;
+        }
+
+        .thank-you-popup.show .thank-you-content {
+            transform: scale(1);
+        }
+
+        .thank-you-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .thank-you-title {
+            color: #66fcf1;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .thank-you-message {
+            color: #c5c6c7;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .thank-you-store {
+            color: #66fcf1;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 15px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: #66fcf1; margin: 0; font-size: 1.8em;">Resumen de Compra</h1>
+    </header>
+    <main>
+    <aside class="cart">
+            <h2>Resumen de compra</h2>
+
+            <div class="summary-row">
+                <span>Artículos:</span><span id="itemsCount">0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Subtotal:</span><span id="subtotal">0.00 €</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Descuento:</span><span id="discount">0% (0.00 €)</span>
+            </div>
+
+            <fieldset class="payment">
+                <legend>Medio de pago</legend>
+                <label><input type="radio" name="payment" value="transfer" checked> Transferencia (sin recargo)</label>
+                <label><input type="radio" name="payment" value="debit"> Tarjeta débito (+5%)</label>
+                <label><input type="radio" name="payment" value="credit"> Tarjeta crédito (+7%)</label>
+
+                <label class="cuotas">Cuotas:
+                    <select id="installments">
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <div class="summary-row">
+                <span>Recargo pago:</span><span id="surcharge">0.00 €</span>
+            </div>
+
+            <div class="summary-row total">
+                <span>Total:</span><span id="total">0.00 €</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Por cuota:</span><span id="perInstallment">0.00 €</span>
+            </div>
+
+            <button id="payBtn" class="btn">Pagar Ahora</button>
+        </aside>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tienda de Juegos</p>
+    </footer>
+    
+    <!-- Popup de agradecimiento -->
+    <div class="thank-you-popup" id="thankYouPopup">
+        <div class="thank-you-content">
+            <div class="thank-you-icon">🎮</div>
+            <div class="thank-you-title">¡Gracias!</div>
+            <div class="thank-you-message">Gracias por tu compra en</div>
+            <div class="thank-you-store">MKL Games</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
