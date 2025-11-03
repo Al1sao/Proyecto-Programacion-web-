@@ -4,197 +4,49 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Carrito de Juegos</title>
-    <link rel="stylesheet" href="Style.css">
-    <style>
-        /* Estilos adicionales para el carrito */
-        .products {
-            flex: 2;
-            background: rgba(31, 40, 51, 0.6);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .products h2 {
-            text-align: center;
-            color: #66fcf1;
-            margin-bottom: 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .product {
-            border: 1px solid #1f2833;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            background: #1f2833;
-            transition: all 0.3s ease;
-        }
-
-        .product:hover {
-            background: #252e3a;
-            border-color: #66fcf1;
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(102, 252, 241, 0.3);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 3px solid #1f2833;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .product-image:hover {
-            border-color: #66fcf1;
-            transform: scale(1.02);
-        }
-
-        .product .name {
-            color: #c5c6c7;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
-        .product .price {
-            color: #66fcf1;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-
-        .cart {
-            flex: 1;
-            background: rgba(31, 40, 51, 0.6);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            height: fit-content;
-        }
-
-        .cart h2 {
-            text-align: center;
-            color: #66fcf1;
-            margin-bottom: 20px;
-        }
-
-        .cart-items {
-            list-style: none;
-            padding: 0;
-        }
-
-        .cart-items li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background: rgba(11, 12, 16, 0.6);
-            border-radius: 5px;
-            color: #c5c6c7;
-        }
-
-        .cart-total {
-            font-weight: bold;
-            margin-top: 20px;
-            text-align: center;
-            color: #66fcf1;
-            font-size: 1.3em;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: #45a29e;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #66fcf1;
-            color: #0b0c10;
-            transform: scale(1.05);
-        }
-
-        main {
-            display: flex;
-            max-width: 1200px;
-            width: 100%;
-            margin: 20px auto;
-            gap: 20px;
-        }
-
-        /* Botones de agregar/eliminar */
-        .product-buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-            flex-direction: column;
-        }
-
-        .add-cart-btn, .remove-cart-btn {
-            padding: 10px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .add-cart-btn {
-            background: #45a29e;
-            color: white;
-        }
-
-        .add-cart-btn:hover {
-            background: #66fcf1;
-            color: #0b0c10;
-            transform: translateY(-2px);
-        }
-
-        .remove-cart-btn {
-            background: #c92a2a;
-            color: white;
-        }
-
-        .remove-cart-btn:hover {
-            background: #e63946;
-            transform: translateY(-2px);
-        }
-
-        .in-cart-label {
-            font-size: 0.85em;
-            color: #66fcf1;
-            font-style: italic;
-            margin-top: 5px;
-        }
-
-        /* Deshabilitar botón de pago cuando está vacío */
-        .btn-disabled {
-            opacity: 0.5;
-            cursor: not-allowed !important;
-            pointer-events: none;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="carrito.css">
 </head>
 <body>
+    <video muted autoplay loop><source src="../Video/holoa.mp4" type="video/mp4"></video>
+
+    <!--  HEADER -->
     <header>
-        <h1 style="color: #66fcf1; margin: 0; font-size: 1.8em;">MKL</h1>
+        <div class="btn-menu">
+            <label for="btn-menu">☰</label>
+        </div>
+
+        <a href="../Main.html" class="logo">🎮 MKL GAMES</a>
+
+        <div class="header-actions">
+            <a href="#" id="login-btn" class="login-btn">Login</a>
+            <a href="carrito.html" id="cart-btn" class="cart-btn" title="Carrito de compras">🛒</a>
+        </div>
     </header>
+
+    <!--MENÚ LAT-->
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <label for="btn-menu" class="close-menu">✖️</label>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar juego...">
+            </div>
+
+            <nav>
+                <a href="../Main.html">Juegos</a>
+                <a href="carrito.html">Catálogo</a>
+                <a href="#">Novedades</a>
+                <a href="#">Eventos</a>
+                <hr>
+                <a href="#">Nosotros</a>
+                <a href="#">Blog</a>
+                <a href="#">Contacto</a>
+                <hr>
+            </nav>
+        </div>
+    </div>
 
     <main>
         <!-- Sección de productos -->
@@ -202,112 +54,266 @@
             <h2>Catálogo</h2>
             <div class="grid" id="productsGrid">
                 <!-- Cada .product tiene data-price -->
-                <div class="product" data-price="19.99" data-name="The Witcher 3">
-                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=The+Witcher+3" alt="The Witcher 3" class="product-image">
-                    <div class="name">The Witcher 3</div>
-                    <div class="price">19.99 €</div>
+                <div class="product" data-price="5.79" data-name="Counter-Strike">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Counter-Strike" alt="Counter-Strike" class="product-image">
+                    <div class="name">Counter-Strike</div>
+                    <div class="price">$5.79 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('The Witcher 3', '19.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('The Witcher 3')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Counter-Strike', '5.79')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Counter-Strike')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="29.99" data-name="Cyberpunk 2077">
-                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Cyberpunk+2077" alt="Cyberpunk 2077" class="product-image">
-                    <div class="name">Cyberpunk 2077</div>
-                    <div class="price">29.99 €</div>
+                <div class="product" data-price="0" data-name="Roblox">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Roblox" alt="Roblox" class="product-image">
+                    <div class="name">Roblox</div>
+                    <div class="price">$0 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Cyberpunk 2077', '29.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('Cyberpunk 2077')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Roblox', '0')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Roblox')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="39.99" data-name="FIFA 23">
-                    <img src="img/FIFA23.png" alt="FIFA 23" class="product-image">
-                    <div class="name">FIFA 23</div>
-                    <div class="price">39.99 €</div>
-                    <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('FIFA 23', '39.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('FIFA 23')" style="display: none;">Eliminar del carrito</button>
-                    </div>
-                    <div class="in-cart-label"></div>
-                </div>
-
-                <div class="product" data-price="26.50" data-name="Minecraft">
-                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Minecraft" alt="Minecraft" class="product-image">
+                <div class="product" data-price="7.59" data-name="Minecraft">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Minecraft" alt="Minecraft" class="product-image">
                     <div class="name">Minecraft</div>
-                    <div class="price">26.50 €</div>
+                    <div class="price">$7.59 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Minecraft', '26.50')">Agregar al carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Minecraft', '7.59')">Agregar al carrito</button>
                         <button class="remove-cart-btn" onclick="removeFromCart('Minecraft')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="4.99" data-name="Among Us">
-                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Among+Us" alt="Among Us" class="product-image">
-                    <div class="name">Among Us</div>
-                    <div class="price">4.99 €</div>
+                <div class="product" data-price="0" data-name="Valorant">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Valorant" alt="Valorant" class="product-image">
+                    <div class="name">Valorant</div>
+                    <div class="price">$0 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Among Us', '4.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('Among Us')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Valorant', '0')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Valorant')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="14.99" data-name="Stardew Valley">
-                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Stardew+Valley" alt="Stardew Valley" class="product-image">
-                    <div class="name">Stardew Valley</div>
-                    <div class="price">14.99 €</div>
+                <div class="product" data-price="7.59" data-name="Terraria">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Terraria" alt="Terraria" class="product-image">
+                    <div class="name">Terraria</div>
+                    <div class="price">$7.59 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Stardew Valley', '14.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('Stardew Valley')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Terraria', '7.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Terraria')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="19.50" data-name="Hades">
-                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Hades" alt="Hades" class="product-image">
-                    <div class="name">Hades</div>
-                    <div class="price">19.50 €</div>
+                <div class="product" data-price="0" data-name="Ápex Legends">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Apex+Legends" alt="Ápex Legends" class="product-image">
+                    <div class="name">Ápex Legends</div>
+                    <div class="price">$0 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Hades', '19.50')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('Hades')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Ápex Legends', '0')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Ápex Legends')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="59.99" data-name="Elden Ring">
-                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Elden+Ring" alt="Elden Ring" class="product-image">
-                    <div class="name">Elden Ring</div>
-                    <div class="price">59.99 €</div>
+                <div class="product" data-price="24.99" data-name="Red Dead Redemption II">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Red+Dead+Redemption+II" alt="Red Dead Redemption II" class="product-image">
+                    <div class="name">Red Dead Redemption II</div>
+                    <div class="price">$24.99 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Elden Ring', '59.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('Elden Ring')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Red Dead Redemption II', '24.99')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Red Dead Redemption II')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="49.99" data-name="God of War">
-                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=God+of+War" alt="God of War" class="product-image">
-                    <div class="name">God of War</div>
-                    <div class="price">49.99 €</div>
+                <div class="product" data-price="3.59" data-name="Black Desert">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Black+Desert" alt="Black Desert" class="product-image">
+                    <div class="name">Black Desert</div>
+                    <div class="price">$3.59 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('God of War', '49.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('God of War')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Black Desert', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Black Desert')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
 
-                <div class="product" data-price="39.99" data-name="Halo Infinite">
-                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Halo+Infinite" alt="Halo Infinite" class="product-image">
-                    <div class="name">Halo Infinite</div>
-                    <div class="price">39.99 €</div>
+                <div class="product" data-price="0" data-name="Albion Online">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Albion+Online" alt="Albion Online" class="product-image">
+                    <div class="name">Albion Online</div>
+                    <div class="price">$0 USD</div>
                     <div class="product-buttons">
-                        <button class="add-cart-btn" onclick="addToCart('Halo Infinite', '39.99')">Agregar al carrito</button>
-                        <button class="remove-cart-btn" onclick="removeFromCart('Halo Infinite')" style="display: none;">Eliminar del carrito</button>
+                        <button class="add-cart-btn" onclick="addToCart('Albion Online', '0')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Albion Online')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="10.09" data-name="Fornite">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Fornite" alt="Fornite" class="product-image">
+                    <div class="name">Fornite</div>
+                    <div class="price">$10.09 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Fornite', '10.09')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Fornite')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="3.59" data-name="Ea FC">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Ea+FC" alt="Ea FC" class="product-image">
+                    <div class="name">Ea FC</div>
+                    <div class="price">$3.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Ea FC', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Ea FC')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="3.59" data-name="Far Cry 4">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Far+Cry+4" alt="Far Cry 4" class="product-image">
+                    <div class="name">Far Cry 4</div>
+                    <div class="price">$3.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Far Cry 4', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Far Cry 4')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="7.59" data-name="Left For Dead 2">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Left+For+Dead+2" alt="Left For Dead 2" class="product-image">
+                    <div class="name">Left For Dead 2</div>
+                    <div class="price">$7.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Left For Dead 2', '7.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Left For Dead 2')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="4.99" data-name="The Last of Us">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=The+Last+of+Us" alt="The Last of Us" class="product-image">
+                    <div class="name">The Last of Us</div>
+                    <div class="price">$4.99 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('The Last of Us', '4.99')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('The Last of Us')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="14.99" data-name="God Of War Ragnarok">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=God+Of+War+Ragnarok" alt="God Of War Ragnarok" class="product-image">
+                    <div class="name">God Of War Ragnarok</div>
+                    <div class="price">$14.99 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('God Of War Ragnarok', '14.99')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('God Of War Ragnarok')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="3.59" data-name="Asseto Corsa">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Asseto+Corsa" alt="Asseto Corsa" class="product-image">
+                    <div class="name">Asseto Corsa</div>
+                    <div class="price">$3.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Asseto Corsa', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Asseto Corsa')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="5.79" data-name="Balatro">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Balatro" alt="Balatro" class="product-image">
+                    <div class="name">Balatro</div>
+                    <div class="price">$5.79 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Balatro', '5.79')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Balatro')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="10.09" data-name="Undertale">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Undertale" alt="Undertale" class="product-image">
+                    <div class="name">Undertale</div>
+                    <div class="price">$10.09 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Undertale', '10.09')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Undertale')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="3.59" data-name="Hollow Knight">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Hollow+Knight" alt="Hollow Knight" class="product-image">
+                    <div class="name">Hollow Knight</div>
+                    <div class="price">$3.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Hollow Knight', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Hollow Knight')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="3.59" data-name="R.E.P.O">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=R.E.P.O" alt="R.E.P.O" class="product-image">
+                    <div class="name">R.E.P.O</div>
+                    <div class="price">$3.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('R.E.P.O', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('R.E.P.O')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="7.59" data-name="Lethal Company">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=Lethal+Company" alt="Lethal Company" class="product-image">
+                    <div class="name">Lethal Company</div>
+                    <div class="price">$7.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Lethal Company', '7.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Lethal Company')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="4.99" data-name="Pubg">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=Pubg" alt="Pubg" class="product-image">
+                    <div class="name">Pubg</div>
+                    <div class="price">$4.99 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('Pubg', '4.99')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('Pubg')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="14.99" data-name="COD Warzone">
+                    <img src="https://via.placeholder.com/300x150/0b0c10/66fcf1?text=COD+Warzone" alt="COD Warzone" class="product-image">
+                    <div class="name">COD Warzone</div>
+                    <div class="price">$14.99 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('COD Warzone', '14.99')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('COD Warzone')" style="display: none;">Eliminar del carrito</button>
+                    </div>
+                    <div class="in-cart-label"></div>
+                </div>
+
+                <div class="product" data-price="3.59" data-name="DBD">
+                    <img src="https://via.placeholder.com/300x150/1f2833/66fcf1?text=DBD" alt="DBD" class="product-image">
+                    <div class="name">DBD</div>
+                    <div class="price">$3.59 USD</div>
+                    <div class="product-buttons">
+                        <button class="add-cart-btn" onclick="addToCart('DBD', '3.59')">Agregar al carrito</button>
+                        <button class="remove-cart-btn" onclick="removeFromCart('DBD')" style="display: none;">Eliminar del carrito</button>
                     </div>
                     <div class="in-cart-label"></div>
                 </div>
@@ -320,7 +326,7 @@
             <ul class="cart-items" id="cartItems">
                 <!-- Aquí se agregarán los productos seleccionados -->
             </ul>
-            <div class="cart-total" id="cartTotal">Total: 0.00 €</div>
+            <div class="cart-total" id="cartTotal">Total: 0.00 USD</div>
             <button id="payBtn" class="btn btn-disabled" onclick="window.location.href='carrito2.html'">Ir a pagar</button>
         </aside>
     </main>

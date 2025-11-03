@@ -48,7 +48,7 @@ function renderCart() {
     
     if (cart.length === 0) {
         cartItems.innerHTML = '<li style="color: #8b8b8b; text-align: center; padding: 20px;">El carrito está vacío</li>';
-        cartTotal.textContent = 'Total: 0.00 €';
+        cartTotal.textContent = 'Total: 0.00 USD';
         // Deshabilitar botón de pago
         if (payBtn) {
             payBtn.classList.add('btn-disabled');
@@ -64,7 +64,7 @@ function renderCart() {
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span>${item.name}</span>
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="color: #66fcf1; font-weight: bold;">${item.price.toFixed(2)} €</span>
+                        <span style="color: #66fcf1; font-weight: bold;">${item.price.toFixed(2)} USD</span>
                         <button onclick="removeFromCart('${item.name}')" 
                                 style="background: #c92a2a; border: none; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8em;">Eliminar</button>
                     </div>
@@ -74,7 +74,7 @@ function renderCart() {
             total += item.price;
         });
         
-        cartTotal.textContent = `Total: ${total.toFixed(2)} €`;
+        cartTotal.textContent = `Total: ${total.toFixed(2)} USD`;
         
         // Habilitar botón de pago
         if (payBtn) {
