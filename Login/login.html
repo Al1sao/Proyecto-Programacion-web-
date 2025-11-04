@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login — MKL GAMES</title>
+    <link rel="stylesheet" href="login.css">
+    <script defer src="login.js"></script>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="login-box">
+            <a href="Main.html" class="logo" id="home-logo">🎮 MKL GAMES</a>
+            <h2 id="form-title">Iniciar sesión</h2>
+
+            <!-- LOGIN -->
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-username">Usuario</label>
+                    <input type="text" id="login-username" placeholder="Ingresa tu usuario" required>
+                </div>
+
+                <!-- campo contraseña oculto hasta validar usuario -->
+                <div class="input-group hidden" id="login-pass-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" placeholder="Ingresa tu contraseña">
+                </div>
+
+                <button type="submit" class="login-btn">Ingresar</button>
+            </form>
+
+            <!-- REGISTER (oculto por defecto) -->
+            <form id="register-form" style="display:none;">
+                <div class="input-group">
+                    <label for="reg-username">Usuario</label>
+                    <input type="text" id="reg-username" placeholder="Elige un usuario" required>
+                </div>
+
+                <!-- campos de contraseña ocultos hasta validar nombre disponible -->
+                <div class="input-group hidden" id="reg-pass-group">
+                    <label for="reg-password">Contraseña</label>
+                    <input type="password" id="reg-password" placeholder="Elige una contraseña">
+                </div>
+
+                <div class="input-group hidden" id="reg-pass2-group">
+                    <label for="reg-password2">Repetir contraseña</label>
+                    <input type="password" id="reg-password2" placeholder="Repite la contraseña">
+                </div>
+
+                <button type="submit" class="login-btn">Registrarse</button>
+            </form>
+
+            <p class="login-msg" id="login-msg"></p>
+
+            <p style="margin-top:12px; color:#c5c6c7;">
+                <span id="to-register" style="cursor:pointer; color:#66fcf1;">¿No tienes cuenta? Registrarse</span>
+                <span id="to-login" style="cursor:pointer; color:#66fcf1; display:none;"> | ¿Ya tienes cuenta? Iniciar sesión</span>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
