@@ -1,37 +1,40 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // --- CONTROL GLOBAL DE SESIÓN ---
-  const loginBtn = document.getElementById('login-btn');
-  const user = localStorage.getItem('mkl_user');
-  const logged = localStorage.getItem('mkl_logged');
-  const path = window.location.pathname;
-  const isMain = path.endsWith('Main.html') || path.endsWith('Main');
+// --- CONTROL GLOBAL DE SESIÓN ---
+const loginBtn = document.getElementById('login-btn');
+const user = localStorage.getItem('mkl_user');
+const logged = localStorage.getItem('mkl_logged');
+const path = window.location.pathname;
+const isMain = path.endsWith('Main.html') || path.endsWith('Main');
 
-  if (logged === '1' && user) {
-    if (loginBtn) {
-      loginBtn.textContent = `${user} (Salir)`;
-      loginBtn.href = "#";
-      loginBtn.addEventListener('click', e => {
-        e.preventDefault();
-        localStorage.removeItem('mkl_logged');
-        localStorage.removeItem('mkl_user');
-        // Redirige correctamente sin importar la carpeta
-const base = window.location.origin + window.location.pathname.split('/')[1];
-window.location.href = `${window.location.origin}/${base.includes('Main.html') ? '' : 'Main.html'}`;
-      });
-    }
-  } else {
-    if (loginBtn) {
-      if (isMain) {
-        loginBtn.textContent = 'Login';
-        loginBtn.href = 'login.html';
-      } else {
-        loginBtn.textContent = 'Iniciar sesión (solo desde página principal)';
-        loginBtn.removeAttribute('href');
-        loginBtn.style.opacity = '0.5';
-        loginBtn.style.pointerEvents = 'none';
-      }
+// función universal de retorno
+const goToMain = () => {
+  window.location.href = '/Main.html';
+};
+
+if (logged === '1' && user) {
+  if (loginBtn) {
+    loginBtn.textContent = `${user} (Salir)`;
+    loginBtn.href = "#";
+    loginBtn.addEventListener('click', e => {
+      e.preventDefault();
+      localStorage.removeItem('mkl_logged');
+      localStorage.removeItem('mkl_user');
+      goToMain();
+    });
+  }
+} else {
+  if (loginBtn) {
+    if (isMain) {
+      loginBtn.textContent = 'Login';
+      loginBtn.href = 'login.html';
+    } else {
+      loginBtn.textContent = 'Iniciar sesión (solo desde página principal)';
+      loginBtn.removeAttribute('href');
+      loginBtn.style.opacity = '0.5';
+      loginBtn.style.pointerEvents = 'none';
     }
   }
+}
+
 
   // --- CARRUSELES DE JUEGOS ---
   const carousels = document.querySelectorAll('.game-carousel');
@@ -80,4 +83,4 @@ window.location.href = `${window.location.origin}/${base.includes('Main.html') ?
       if (loaded === imgs.length) updateCarousel();
     }
   });
-});
+
