@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="contacto.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <a href="../Main.html" class="logo" id="home-logo">🎮 MKL GAMES</a>
+      <h1>Contacto</h1>
+      <p>Completá el siguiente formulario (Los campos con * son obligatorios):</p>
+
+      <form id="contact-form" novalidate>
+        <div class="input-group obligatorio">
+          <label for="nombre">Nombre *</label>
+          <input type="text" id="nombre" name="nombre" required>
+          <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group obligatorio">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" required>
+          <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group obligatorio">
+          <label for="asunto">Asunto *</label>
+          <input type="text" id="asunto" name="asunto" required>
+          <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group obligatorio">
+          <label for="fecha">Fecha *</label>
+          <input type="date" id="fecha" name="fecha" required>
+          <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group obligatorio">
+          <label for="entero">Número entero (mayor a 0) *</label>
+          <input type="number" id="entero" name="entero" required>
+          <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group optativo">
+          <label for="decimal">Número decimal (opcional)</label>
+          <input type="text" id="decimal" name="decimal" placeholder="Ej: 3.14">
+          <small class="error-msg"></small>
+        </div>
+
+        <div class="input-group obligatorio">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          <small class="error-msg"></small>
+        </div>
+
+        <button type="submit" class="btn">Enviar</button>
+        <p id="status-msg"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="contacto.js"></script>
+</body>
+</html>
